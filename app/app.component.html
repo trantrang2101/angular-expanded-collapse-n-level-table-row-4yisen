@@ -1,0 +1,17 @@
+<!-- <recursive-component [item]="{ subtasks: sampleData }"></recursive-component> -->
+<table>
+  <ng-container *ngFor="let item of items">
+    <tr>
+      <td *ngFor="let tabs of [].constructor(item.index)">
+        {{ tabs }}
+      </td>
+      <th *ngFor="let title of item.titles">{{ title }}</th>
+    </tr>
+    <tr (click)="expanded(item)">
+      <td *ngFor="let tabs of [].constructor(item.index)">
+        {{ tabs }}
+      </td>
+      <td *ngFor="let title of item.titles">{{ item[title] }}</td>
+    </tr>
+  </ng-container>
+</table>

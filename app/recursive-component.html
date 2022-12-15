@@ -1,0 +1,19 @@
+<ng-container *ngIf="index">
+  <div [style.margin-left]="(index-1)*20+'px'" class="row">
+    <div class="col" *ngFor="let title of item.titles">{{title}}</div>
+  </div>
+  <div class="row" (click)="item.expand=!item.expand">
+    <div class="col" *ngFor="let tabs of [].constructor(item.index)">
+      {{item.index}}
+    </div>
+    <div class="col" *ngFor="let title of item.titles">{{item[title]}}</div>
+  </div>
+</ng-container>
+<ng-container *ngIf="item.subtasks && (index==0 || item.expand)">
+  <recursive-component
+    *ngFor="let item of item.subtasks"
+    [index]="index+1"
+    [item]="item"
+  ></recursive-component>
+  <ng-container></ng-container
+></ng-container>
